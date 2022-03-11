@@ -3,6 +3,7 @@ package a13_인터페이스2.controller;
 import java.util.Scanner;
 
 import a13_인터페이스2.model.User;
+import a13_인터페이스2.service.AccountService;
 import a13_인터페이스2.service.UserService;
 import a13_인터페이스2.view.Index;
 import a13_인터페이스2.view.IndexImpl;
@@ -13,10 +14,12 @@ import a13_인터페이스2.view.SelectGetUserImpl;
 public class PageController {
 	private final Input input;
 	private final UserService userService;
+	private final AccountService accountService;
 	
-	public PageController(Input input, UserService userService) {
+	public PageController(Input input, UserService userService, AccountService accountService) {
 		this.input = input;
 		this.userService = userService;
+		this.accountService = accountService;
 	}
 	
 	public void index() {
@@ -55,12 +58,14 @@ public class PageController {
 				
 				for(int i = 0; i < users.length; i++) {
 					if(users[i] == null) { 
-		// user배열의 해당 인덱스에 user객체가 없으면 user객체,showUser()메소드를 호출 할 수 없기 때문에 continue로 넘김
+						// user배열의 해당 인덱스에 user객체가 없으면 user객체,showUser()메소드를 호출 할 수 없기 때문에 continue로 넘김
 						continue;
 					}
 					System.out.println(users[i]);
-					//해당 배열에 user객체가 존재하기 때문에 user정보를 출력.
+					//user[i].showUser();//해당 배열에 user객체가 존재하기 때문에 user정보를 출력.
 				}
+				System.out.println("=============================");
+				accountService.printUserProfile();
 				
 			}else if (select == '2') {
 				String username = input.typedUsername(scanner);

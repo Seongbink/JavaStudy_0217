@@ -1,13 +1,23 @@
 package a13_인터페이스2.service;
 
+import java.util.Scanner;
+
 import a13_인터페이스2.data.UserData;
 import a13_인터페이스2.model.User;
 
 public class UserServiceImpl implements UserService {
 	private final UserData userData;
+	private final Scanner scanner;
 	
-	public UserServiceImpl(UserData userData) {
-		this.userData = userData;
+	public UserServiceImpl() {
+		scanner = new Scanner(System.in);
+		System.out.print("관리할 회원의 수를 입력해주세요:");
+		User[] users = new User[scanner.nextInt()];
+		//회원을 저장할 배열의 크기를 지정하고 생성된 배열을 UserData 객체의 users 배열 변수에 set하는 것
+		this.userData = UserData.getInstatnce(users);
+		scanner.nextLine();
+		//위의 nextInt()후에 버퍼에 저장된 엔터를 날려주기위함.
+		
 	}
 	@Override
 	public void addUser(User user) {
