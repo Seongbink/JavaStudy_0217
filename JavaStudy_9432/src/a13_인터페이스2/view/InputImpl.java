@@ -24,7 +24,7 @@ public class InputImpl implements Input{
 		System.out.println("회원이름: ");
 		user.setName(scanner.nextLine());
 		System.out.println("회원이메일: ");
-		user.setEamil(scanner.nextLine());
+		user.setEmail(scanner.nextLine());
 		return user;
 	}
 	@Override

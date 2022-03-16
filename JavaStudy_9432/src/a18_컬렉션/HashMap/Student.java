@@ -1,4 +1,4 @@
-package a13_인터페이스2.model;
+package a18_컬렉션.HashMap;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,12 +9,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-
-public class User {
-	private String username;
-	private String password;
+public class Student {
+	/*
+	 * studentName
+	 * studentEmail
+	 * studentAddress
+	 */
 	private String name;
 	private String email;
-	
-	
+	private String address;
+
 }
