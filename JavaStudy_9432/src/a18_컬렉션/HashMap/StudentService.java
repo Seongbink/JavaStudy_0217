@@ -50,12 +50,40 @@ public class StudentService  {
 	
 	//학생 정보 수정
 	public void updateStudentByname(String name, String email, String address) {
-		수정이랑 삭제 숙제
-	}
-	
-	//학생 정보 삭제
-	public void deleteStudentByname(String name) {
-		
-	}
+		if(studentMap.containsKey(name)) {
+			if(isEmpty(email) && isEmpty(address)) {
+				System.out.println("수정할 정보가 없습니다.");
+				System.out.println();
+			}else {	
+				Student student = studentMap.get(name);
+				
+				if(isEmpty(email)) {
+					student.setAddress(address);
+				}else if(isEmpty(address)) {
+					student.setEmail(email);
+				}else {
+					student.setAddress(address);
+					student.setEmail(email);
+				}
+					System.out.println(name + "의 학생 정보가 수정되었습니다.");
+					System.out.println();
+				}
+			} else {
+				System.out.println(name + "의 학생 정보가 존재하지 않습니다.");
+				System.out.println();
+			}
+		}
 
-}
+		// 학생 정보 삭제
+		public void deleteStudentByname(String name) {
+			if (studentMap.containsKey(name)) {
+				studentMap.remove(name);
+				System.out.println("학생 정보가 삭제되었습니다.");
+				System.out.println();
+			} else {
+				System.out.println(name + "의 학생 정보가 존재하지 않습니다.");
+				System.out.println();
+			}
+		}
+
+	}
